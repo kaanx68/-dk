@@ -4,6 +4,7 @@ model_list:
     litellm_params:
       model: openrouter/anthropic/claude-sonnet-5.5:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
+      thinking: {"type": "enabled", "budget_tokens": 2048}
       cache_control_injection_points:
         - location: "message"
           role: "system"
@@ -16,6 +17,7 @@ model_list:
     litellm_params:
       model: openrouter/anthropic/claude-haiku-5.5:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
+      thinking: {"type": "enabled", "budget_tokens": 2048}
       cache_control_injection_points:
         - location: "message"
           role: "system"
@@ -28,9 +30,13 @@ model_list:
     litellm_params:
       model: openrouter/anthropic/claude-opus-4.7:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
+      thinking: {"type": "enabled", "budget_tokens": 2048}
       cache_control_injection_points:
         - location: "message"
           role: "system"
           control:
             type: "ephemeral"
             ttl: "1h"
+
+litellm_settings:
+  return_response_reasoning_content: true
