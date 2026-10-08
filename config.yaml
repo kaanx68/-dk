@@ -4,48 +4,21 @@ model_list:
       model: openrouter/anthropic/claude-3.5-sonnet
       api_key: "os.environ/OPENROUTER_API_KEY"
       max_tokens: 8192
-      extra_body:
-        include_reasoning: true
-        thinking:
-          type: "enabled"
-          budget_tokens: 2048
+      extra_body: {"include_reasoning": true, "thinking": {"type": "enabled", "budget_tokens": 2048}}
 
   - model_name: claude-haiku
     litellm_params:
       model: openrouter/anthropic/claude-3.5-haiku
       api_key: "os.environ/OPENROUTER_API_KEY"
       max_tokens: 8192
-      extra_body:
-        include_reasoning: true
-        thinking:
-          type: "enabled"
-          budget_tokens: 2048
+      extra_body: {"include_reasoning": true, "thinking": {"type": "enabled", "budget_tokens": 2048}}
 
   - model_name: claude-opus
     litellm_params:
       model: openrouter/anthropic/claude-3-opus
       api_key: "os.environ/OPENROUTER_API_KEY"
       max_tokens: 8192
-      extra_body:
-        include_reasoning: true
-        thinking:
-          type: "enabled"
-          budget_tokens: 2048
-
-litellm_settings:
-  return_response_reasoning_content: true
-     api_key: "os.environ/OPENROUTER_API_KEY"
-      stream: true
-      extra_body:
-        thinking:
-          type: "enabled"
-          budget_tokens: 2048
-      cache_control_injection_points:
-        - location: "message"
-          role: "system"
-          control:
-            type: "ephemeral"
-            ttl: "1h"
+      extra_body: {"include_reasoning": true, "thinking": {"type": "enabled", "budget_tokens": 2048}}
 
 litellm_settings:
   return_response_reasoning_content: true
