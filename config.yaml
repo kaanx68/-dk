@@ -1,10 +1,13 @@
 model_list:
-  # 1. Claude Sonnet
   - model_name: claude-sonnet
     litellm_params:
       model: openrouter/anthropic/claude-sonnet-5.5:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
-      thinking: {"type": "enabled", "budget_tokens": 2048}
+      stream: true
+      extra_body:
+        thinking:
+          type: "enabled"
+          budget_tokens: 2048
       cache_control_injection_points:
         - location: "message"
           role: "system"
@@ -12,12 +15,15 @@ model_list:
             type: "ephemeral"
             ttl: "1h"
 
-  # 2. Claude Haiku
   - model_name: claude-haiku
     litellm_params:
       model: openrouter/anthropic/claude-haiku-5.5:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
-      thinking: {"type": "enabled", "budget_tokens": 2048}
+      stream: true
+      extra_body:
+        thinking:
+          type: "enabled"
+          budget_tokens: 2048
       cache_control_injection_points:
         - location: "message"
           role: "system"
@@ -25,12 +31,15 @@ model_list:
             type: "ephemeral"
             ttl: "1h"
 
-  # 3. Claude Opus
   - model_name: claude-opus
     litellm_params:
       model: openrouter/anthropic/claude-opus-4.7:anthropic
       api_key: "os.environ/OPENROUTER_API_KEY"
-      thinking: {"type": "enabled", "budget_tokens": 2048}
+      stream: true
+      extra_body:
+        thinking:
+          type: "enabled"
+          budget_tokens: 2048
       cache_control_injection_points:
         - location: "message"
           role: "system"
