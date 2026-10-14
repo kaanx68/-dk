@@ -63,7 +63,7 @@ model_list:
   - model_name: gemini-argon
     litellm_params:
       model: vertex_ai/gemini-4-argon
-      vertex_project: "foreel1" # Kendi project_id değerin
+      vertex_project: "gen-lang-client-0302992290" # Kendi project_id değerin
       vertex_location: "global"
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768
@@ -92,7 +92,7 @@ model_list:
   - model_name: gemini-flash
     litellm_params:
       model: vertex_ai/gemini-3.8-flash
-      vertex_project: "foreel1" # Kendi project_id değerin
+      vertex_project: "gen-lang-client-0302992290" # Kendi project_id değerin
       vertex_location: "global" # 404 hatasını çözmek için global yapıldı
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768
