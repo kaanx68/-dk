@@ -68,10 +68,14 @@ model_list:
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768 # Düşünme + yanıt tokenları ortak olduğu için yüksek tutulmalı
       
-      reasoning_effort: "medium" # Seçenekler: "low", "medium", "high"
       merge_reasoning_content_in_choices: true
       additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
       
+      extra_body:
+        thinkingConfig:
+          thinkingLevel: "medium"
+          includeThoughts: true
+
       safety_settings:
         - category: HARM_CATEGORY_HARASSMENT
           threshold: "OFF"
@@ -87,14 +91,18 @@ model_list:
     litellm_params:
       model: vertex_ai/gemini-3.8-flash
       vertex_project: "gen-lang-client-0302992290" # JSON dosyanın içindeki project_id değeri
-      vertex_location: "us-central1"
+      vertex_location: "global"
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768
       
-      reasoning_effort: "medium" # Seçenekler: "low", "medium", "high"
       merge_reasoning_content_in_choices: true
       additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
       
+      extra_body:
+        thinkingConfig:
+          thinkingLevel: "medium"
+          includeThoughts: true
+
       safety_settings:
         - category: HARM_CATEGORY_HARASSMENT
           threshold: "OFF"
