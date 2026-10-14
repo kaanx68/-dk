@@ -1,5 +1,5 @@
 model_list:
-  # 1. Claude Sonnet (Mevcut OpenRouter Kurulumun)
+  # 1. Claude Sonnet
   - model_name: claude-sonnet
     litellm_params:
       model: openrouter/anthropic/claude-sonnet-5.5
@@ -19,7 +19,7 @@ model_list:
           type: ephemeral
           ttl: 1h
 
-  # 2. Claude Haiku (Mevcut OpenRouter Kurulumun)
+  # 2. Claude Haiku
   - model_name: claude-haiku
     litellm_params:
       model: openrouter/anthropic/claude-haiku-5.5
@@ -39,7 +39,7 @@ model_list:
           type: ephemeral
           ttl: 1h
 
-  # 3. Claude Opus (Mevcut OpenRouter Kurulumun)
+  # 3. Claude Opus
   - model_name: claude-opus
     litellm_params:
       model: openrouter/anthropic/claude-opus-4.7
@@ -59,20 +59,21 @@ model_list:
           type: ephemeral
           ttl: 1h
 
-  # 4. Gemini 4 Argon (Vertex AI - Filtresiz & Düşünce Kutusu Açık)
+  # 4. Gemini 4 Argon (Varsayılan Medium Düşünme & Filtresiz)
   - model_name: gemini-argon
     litellm_params:
       model: vertex_ai/gemini-4-argon
-      vertex_project: "gen-lang-client-0302992290" # Kendi project_id değerin
+      vertex_project: "gen-lang-client-0302992290"
       vertex_location: "global"
       vertex_credentials: "/etc/secrets/vertex.json"
-      max_tokens: 32768
+      max_tokens: 65536
       
       merge_reasoning_content_in_choices: true
       additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
       
-      thinkingConfig:
-            thinkingLevel: "MEDIUM"
+      extra_body:
+        generationConfig:
+          thinkingConfig:
             includeThoughts: true
       
       safety_settings:
@@ -85,23 +86,22 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 5. Gemini 3.8 Flash (Vertex AI - Global Endpoint & Düşünce Kutusu Açık)
+  # 5. Gemini 3.8 Flash (Medium Düşünme & Filtresiz)
   - model_name: gemini-flash
     litellm_params:
       model: vertex_ai/gemini-3.8-flash
-      vertex_project: "gen-lang-client-0302992290" # Kendi project_id değerin
-      vertex_location: "global" # 404 hatasını çözmek için global yapıldı
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768
       
-      reasoning_effort: "medium"
       merge_reasoning_content_in_choices: true
       additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
       
       extra_body:
         generationConfig:
           thinkingConfig:
-            thinkingLevel: "LOW"
+            thinkingLevel: "MEDIUM"
             includeThoughts: true
       
       safety_settings:
