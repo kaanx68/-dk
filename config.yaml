@@ -74,13 +74,13 @@ model_list:
       
       safety_settings:
         - category: HARM_CATEGORY_HARASSMENT
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_HATE_SPEECH
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_DANGEROUS_CONTENT
-          threshold: OFF
+          threshold: "OFF"
 
   # 5. Gemini 3.8 Flash (Vertex AI - Hızlı/Ekonomik Alternatif)
   - model_name: gemini-flash
@@ -97,13 +97,13 @@ model_list:
       
       safety_settings:
         - category: HARM_CATEGORY_HARASSMENT
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_HATE_SPEECH
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
-          threshold: OFF
+          threshold: "OFF"
         - category: HARM_CATEGORY_DANGEROUS_CONTENT
-          threshold: OFF
+          threshold: "OFF"
 
 litellm_settings:
   drop_params: true
