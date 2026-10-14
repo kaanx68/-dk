@@ -1,5 +1,5 @@
 model_list:
-  # 1. Claude Sonnet
+  # 1. Claude Sonnet (Mevcut OpenRouter Kurulumun)
   - model_name: claude-sonnet
     litellm_params:
       model: openrouter/anthropic/claude-sonnet-5.5
@@ -19,7 +19,7 @@ model_list:
           type: ephemeral
           ttl: 1h
 
-  # 2. Claude Haiku
+  # 2. Claude Haiku (Mevcut OpenRouter Kurulumun)
   - model_name: claude-haiku
     litellm_params:
       model: openrouter/anthropic/claude-haiku-5.5
@@ -39,7 +39,7 @@ model_list:
           type: ephemeral
           ttl: 1h
 
-  # 3. Claude Opus
+  # 3. Claude Opus (Mevcut OpenRouter Kurulumun)
   - model_name: claude-opus
     litellm_params:
       model: openrouter/anthropic/claude-opus-4.7
@@ -58,6 +58,52 @@ model_list:
         cache_control:
           type: ephemeral
           ttl: 1h
+
+  # 4. Gemini 4 Argon (Vertex AI - Filtresiz & Thinking Uyumlu)
+  - model_name: gemini-argon
+    litellm_params:
+      model: vertex_ai/gemini-4-argon
+      vertex_project: "gen-lang-client-0302992290" # JSON dosyanın içindeki project_id değeri
+      vertex_location: "global" # Argon için 'global' zorunludur
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 32768 # Düşünme + yanıt tokenları ortak olduğu için yüksek tutulmalı
+      
+      reasoning_effort: "medium" # Seçenekler: "low", "medium", "high"
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      safety_settings:
+        - category: HARM_CATEGORY_HARASSMENT
+          threshold: OFF
+        - category: HARM_CATEGORY_HATE_SPEECH
+          threshold: OFF
+        - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
+          threshold: OFF
+        - category: HARM_CATEGORY_DANGEROUS_CONTENT
+          threshold: OFF
+
+  # 5. Gemini 3.8 Flash (Vertex AI - Hızlı/Ekonomik Alternatif)
+  - model_name: gemini-flash
+    litellm_params:
+      model: vertex_ai/gemini-3.8-flash
+      vertex_project: "gen-lang-client-0302992290" # JSON dosyanın içindeki project_id değeri
+      vertex_location: "us-central1"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 32768
+      
+      reasoning_effort: "medium" # Seçenekler: "low", "medium", "high"
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      safety_settings:
+        - category: HARM_CATEGORY_HARASSMENT
+          threshold: OFF
+        - category: HARM_CATEGORY_HATE_SPEECH
+          threshold: OFF
+        - category: HARM_CATEGORY_SEXUALLY_EXPLICIT
+          threshold: OFF
+        - category: HARM_CATEGORY_DANGEROUS_CONTENT
+          threshold: OFF
 
 litellm_settings:
   drop_params: true
