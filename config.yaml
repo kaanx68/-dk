@@ -68,13 +68,10 @@ model_list:
       vertex_credentials: "/etc/secrets/vertex.json"
       max_tokens: 32768
       
-      reasoning_effort: "medium"
       merge_reasoning_content_in_choices: true
       additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
       
-      extra_body:
-        generationConfig:
-          thinkingConfig:
+      thinkingConfig:
             thinkingLevel: "MEDIUM"
             includeThoughts: true
       
