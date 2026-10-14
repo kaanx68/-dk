@@ -101,7 +101,7 @@ model_list:
       extra_body:
         generationConfig:
           thinkingConfig:
-            thinkingLevel: "MEDIUM"
+            thinkingLevel: "LOW"
             includeThoughts: true
       
       safety_settings:
