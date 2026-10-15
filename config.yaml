@@ -115,5 +115,61 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
+  # 6. Gemini 3.8 Flash (Zorunlu Yüksek Düşünme)
+  - model_name: flash-high
+    litellm_params:
+      model: vertex_ai/gemini-3.8-flash
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 32768
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "HIGH"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
+
+  # 7. Gemini 4 Argon (Zorunlu Yüksek Düşünme)
+  - model_name: argon-high
+    litellm_params:
+      model: vertex_ai/gemini-4-argon
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 65536
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "HIGH"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
+
 litellm_settings:
   drop_params: true
