@@ -170,6 +170,88 @@ model_list:
           threshold: "OFF"
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
+  - model_name: flash-high
+    litellm_params:
+      model: vertex_ai/gemini-3.8-flash
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 32768
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "HIGH"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
+
+  # 8. Gemini 4 Argon (Düşük Düşünme)
+  - model_name: argon-low
+    litellm_params:
+      model: vertex_ai/gemini-4-argon
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 65536
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "LOW"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
+
+  # 9. Gemini 3.8 Flash (Düşük Düşünme)
+  - model_name: flash-low
+    litellm_params:
+      model: vertex_ai/gemini-3.8-flash
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 32768
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "LOW"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
 
 litellm_settings:
   drop_params: true
