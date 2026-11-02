@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.14-slim
 RUN pip install --upgrade "litellm[proxy]>=1.105.0" google-auth
 COPY config.yaml /app/config.yaml
 WORKDIR /app
