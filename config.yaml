@@ -87,63 +87,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 5. Gemini 3.8 Flash (Medium Düşünme & Filtresiz)
-  - model_name: gemini-flash
-    litellm_params:
-      model: vertex_ai/gemini-3.8-flash
-      vertex_project: "gen-lang-client-0302992290"
-      vertex_location: "global"
-      vertex_credentials: "/etc/secrets/vertex.json"
-      max_tokens: 32768
-      
-      merge_reasoning_content_in_choices: true
-      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
-      
-      extra_body:
-        generationConfig:
-          thinkingConfig:
-            thinkingLevel: "MEDIUM"
-            includeThoughts: true
-      
-      safety_settings:
-        - category: "HARM_CATEGORY_HARASSMENT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_HATE_SPEECH"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
-          threshold: "OFF"
-
-  # 6. Gemini 3.8 Flash (Zorunlu Yüksek Düşünme)
-  - model_name: flash-high
-    litellm_params:
-      model: vertex_ai/gemini-3.8-flash
-      vertex_project: "gen-lang-client-0302992290"
-      vertex_location: "global"
-      vertex_credentials: "/etc/secrets/vertex.json"
-      max_tokens: 32768
-      
-      merge_reasoning_content_in_choices: true
-      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
-      
-      extra_body:
-        generationConfig:
-          thinkingConfig:
-            thinkingLevel: "HIGH"
-            includeThoughts: true
-      
-      safety_settings:
-        - category: "HARM_CATEGORY_HARASSMENT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_HATE_SPEECH"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
-          threshold: "OFF"
-
-  # 7. Gemini 4 Argon (Zorunlu Yüksek Düşünme)
+  # 5. Gemini 4 Argon (Zorunlu Yüksek Düşünme)
   - model_name: argon-high
     litellm_params:
       model: vertex_ai/gemini-4-argon
@@ -171,7 +115,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 8. Gemini 4 Argon (Düşük Düşünme)
+  # 6. Gemini 4 Argon (Düşük Düşünme)
   - model_name: argon-low
     litellm_params:
       model: vertex_ai/gemini-4-argon
@@ -199,35 +143,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 9. Gemini 3.8 Flash (Düşük Düşünme)
-  - model_name: flash-low
-    litellm_params:
-      model: vertex_ai/gemini-3.8-flash
-      vertex_project: "gen-lang-client-0302992290"
-      vertex_location: "global"
-      vertex_credentials: "/etc/secrets/vertex.json"
-      max_tokens: 32768
-      
-      merge_reasoning_content_in_choices: true
-      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
-      
-      extra_body:
-        generationConfig:
-          thinkingConfig:
-            thinkingLevel: "LOW"
-            includeThoughts: true
-      
-      safety_settings:
-        - category: "HARM_CATEGORY_HARASSMENT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_HATE_SPEECH"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
-          threshold: "OFF"
-        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
-          threshold: "OFF"
-
-  # 10. Gemini 4 Hydrogen (Varsayılan Medium Düşünme & Filtresiz)
+  # 7. Gemini 4 Hydrogen (Varsayılan Medium Düşünme & Filtresiz)
   - model_name: gemini-hydrogen
     litellm_params:
       model: vertex_ai/gemini-4-hydrogen
@@ -255,7 +171,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 11. Gemini 4 Hydrogen (Zorunlu Yüksek Düşünme)
+  # 8. Gemini 4 Hydrogen (Zorunlu Yüksek Düşünme)
   - model_name: hydrogen-high
     litellm_params:
       model: vertex_ai/gemini-4-hydrogen
@@ -283,7 +199,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 12. Gemini 4 Hydrogen (Zorunlu Yüksek Düşünme)
+  # 9. Gemini 4 Hydrogen (Zorunlu Yüksek Düşünme)
   - model_name: hydrogen-low
     litellm_params:
       model: vertex_ai/gemini-4-hydrogen
@@ -311,7 +227,7 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 13. Gemini 4 Carbon (Varsayılan Medium Düşünme & Filtresiz)
+  # 10. Gemini 4 Carbon (Varsayılan Medium Düşünme & Filtresiz)
   - model_name: gemini-carbon
     litellm_params:
       model: vertex_ai/gemini-4-carbon
