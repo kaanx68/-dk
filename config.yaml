@@ -283,7 +283,35 @@ model_list:
         - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
           threshold: "OFF"
 
-  # 12. Gemini 4 Carbon (Varsayılan Medium Düşünme & Filtresiz)
+  # 12. Gemini 4 Hydrogen (Zorunlu Yüksek Düşünme)
+  - model_name: hydrogen-low
+    litellm_params:
+      model: vertex_ai/gemini-4-hydrogen
+      vertex_project: "gen-lang-client-0302992290"
+      vertex_location: "global"
+      vertex_credentials: "/etc/secrets/vertex.json"
+      max_tokens: 65536
+      
+      merge_reasoning_content_in_choices: true
+      additional_drop_params: ["temperature", "top_p", "top_k", "frequency_penalty", "presence_penalty", "repetition_penalty"]
+      
+      extra_body:
+        generationConfig:
+          thinkingConfig:
+            thinkingLevel: "LOW"
+            includeThoughts: true
+      
+      safety_settings:
+        - category: "HARM_CATEGORY_HARASSMENT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_HATE_SPEECH"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+          threshold: "OFF"
+        - category: "HARM_CATEGORY_DANGEROUS_CONTENT"
+          threshold: "OFF"
+
+  # 13. Gemini 4 Carbon (Varsayılan Medium Düşünme & Filtresiz)
   - model_name: gemini-carbon
     litellm_params:
       model: vertex_ai/gemini-4-carbon
